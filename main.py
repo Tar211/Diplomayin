@@ -680,7 +680,7 @@ class Window(QMainWindow):
         self.RB_group_6.addButton(self.srt_infarkt_3)
         self.RB_group_6.addButton(self.srt_infarkt_4)
 
-        #
+        ##
 
 
 
