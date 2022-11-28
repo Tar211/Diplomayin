@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets,QtGui
-from PyQt5.QtWidgets import QApplication , QMainWindow ,QLineEdit,QDateEdit,QRadioButton,QVBoxLayout,QTimeEdit,QScrollArea,QWidget
+from PyQt5.QtWidgets import QApplication , QMainWindow ,QLineEdit,QDateEdit,QRadioButton,QVBoxLayout,QTimeEdit,QScrollArea,QWidget,QTextEdit
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
@@ -18,7 +18,7 @@ class Window(QMainWindow):
         #Scroll bar
         self.scroll = QScrollArea()
         self.widget = QWidget()
-        self.widget.resize(1920, 1890)
+        self.widget.resize(1920, 4130)
         self.scroll.setWidget(self.widget)
         self.setCentralWidget(self.scroll)
 
@@ -692,6 +692,53 @@ class Window(QMainWindow):
 
 
 
+        self.label29 = QtWidgets.QLabel(self.widget)
+        self.label29.setText("Կարդիոգեն շոկ՝ ")
+        self.label29.move(80, 1890)
+        self.label29.setFont(QFont("Arial latarm", 15))
+        self.label29.adjustSize()
+
+        self.layout7 = QVBoxLayout()
+        self.setLayout(self.layout7)
+
+        self.kard_shok_1 = QRadioButton('Ոչ', self.widget)
+        self.kard_shok_1.toggled.connect(self.update_ubh)
+        self.kard_shok_1.move(550, 1890)
+        self.kard_shok_1.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
+        self.kard_shok_1.setFont(QFont("Arial latarm", 19))
+        self.kard_shok_1.adjustSize()
+
+        self.kard_shok_2 = QRadioButton('Այո', self.widget)
+        self.kard_shok_2.toggled.connect(self.update_ubh)
+        self.kard_shok_2.move(750, 1890)
+        self.kard_shok_2.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
+        self.kard_shok_2.setFont(QFont("Arial latarm", 19))
+        self.kard_shok_2.adjustSize()
+
+        self.kard_shok_3 = QRadioButton('Հեմոդինամիկ անկայուն', self.widget)
+        self.kard_shok_3.toggled.connect(self.update_ubh)
+        self.kard_shok_3.move(950, 1890)
+        self.kard_shok_3.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
+        self.kard_shok_3.setFont(QFont("Arial latarm", 19))
+        self.kard_shok_3.adjustSize()
+
+        self.kard_shok_4 = QRadioButton('Ռեֆռակտեր շոկ', self.widget)
+        self.kard_shok_4.toggled.connect(self.update_ubh)
+        self.kard_shok_4.move(1450, 1890)
+        self.kard_shok_4.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
+        self.kard_shok_4.setFont(QFont("Arial latarm", 19))
+        self.kard_shok_4.adjustSize()
+
+        self.layout7.addWidget(self.kard_shok_1)
+        self.layout7.addWidget(self.kard_shok_2)
+        self.layout7.addWidget(self.kard_shok_3)
+        self.layout7.addWidget(self.kard_shok_4)
+
+        self.RB_group_7 = QtWidgets.QButtonGroup()
+        self.RB_group_7.addButton(self.kard_shok_1)
+        self.RB_group_7.addButton(self.kard_shok_2)
+        self.RB_group_7.addButton(self.kard_shok_3)
+        self.RB_group_7.addButton(self.kard_shok_4)
 
 
 
@@ -699,6 +746,281 @@ class Window(QMainWindow):
 
 
 
+
+
+
+
+
+
+        self.label30 = QtWidgets.QLabel(self.widget)
+        self.label30.setText("Առիթմիա՝ ")
+        self.label30.move(80, 2040)
+        self.label30.setFont(QFont("Arial latarm", 15))
+        self.label30.adjustSize()
+
+        self.layout8 = QVBoxLayout()
+        self.setLayout(self.layout8)
+
+        self.aritmia_1 = QRadioButton('Sust VT/VF', self.widget)
+        self.aritmia_1.toggled.connect(self.update_ubh)
+        self.aritmia_1.move(550, 2040)
+        self.aritmia_1.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
+        self.aritmia_1.setFont(QFont("Arial latarm", 19))
+        self.aritmia_1.adjustSize()
+
+        self.aritmia_2 = QRadioButton('Heart Block', self.widget)
+        self.aritmia_2.toggled.connect(self.update_ubh)
+        self.aritmia_2.move(950, 2040)
+        self.aritmia_2.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
+        self.aritmia_2.setFont(QFont("Arial latarm", 19))
+        self.aritmia_2.adjustSize()
+
+        self.aritmia_3 = QRadioButton('AF/Flutter', self.widget)
+        self.aritmia_3.toggled.connect(self.update_ubh)
+        self.aritmia_3.move(1350, 2040)
+        self.aritmia_3.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
+        self.aritmia_3.setFont(QFont("Arial latarm", 19))
+        self.aritmia_3.adjustSize()
+
+        self.layout8.addWidget(self.aritmia_1)
+        self.layout8.addWidget(self.aritmia_2)
+        self.layout8.addWidget(self.aritmia_3)
+
+        self.RB_group_8 = QtWidgets.QButtonGroup()
+        self.RB_group_8.addButton(self.aritmia_1)
+        self.RB_group_8.addButton(self.aritmia_2)
+        self.RB_group_8.addButton(self.aritmia_3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        self.label31 = QtWidgets.QLabel(self.widget)
+        self.label31.setText("Նախնական ախտորոշում՝ ")
+        self.label31.move(80, 2240)
+        self.label31.setFont(QFont("Arial latarm", 16))
+        self.label31.setStyleSheet("font-weight: bold")
+        self.label31.adjustSize()
+
+        self.N_axtoroshum = QDateEdit(self.widget)
+        self.N_axtoroshum.setGeometry(520, 2240, 200, 37)
+        self.N_axtoroshum.setFont(QFont("Arial latarm", 14))
+        self.d = QDate(2020, 6, 10)
+        self.N_axtoroshum.setDate(self.d)
+
+
+        self.N_axtoroshum_text = QTextEdit(self.widget)
+        self.N_axtoroshum_text.setGeometry(80, 2340, 1690, 307)
+        self.N_axtoroshum_text.setFont(QFont("Arial latarm", 14))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        self.label32 = QtWidgets.QLabel(self.widget)
+        self.label32.setText("Ուղեկցող հիվանդություններ՝ ")
+        self.label32.move(80, 2760)
+        self.label32.setFont(QFont("Arial latarm", 16))
+        self.label32.setStyleSheet("font-weight: bold")
+        self.label32.adjustSize()
+
+        self.Ux_hivandutyunner = QTextEdit(self.widget)
+        self.Ux_hivandutyunner.setGeometry(80, 2860, 1690, 197)
+        self.Ux_hivandutyunner.setFont(QFont("Arial latarm", 14))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        self.label33 = QtWidgets.QLabel(self.widget)
+        self.label33.setText("Նախկինում կատարած ներսրտային միջամտություն / վիրահատություն՝ ")
+        self.label33.move(80, 3220)
+        self.label33.setFont(QFont("Arial latarm", 16))
+        self.label33.setStyleSheet("font-weight: bold")
+        self.label33.adjustSize()
+
+
+
+        self.label34 = QtWidgets.QLabel(self.widget)
+        self.label34.setText("1. ")
+        self.label34.move(80, 3350)
+        self.label34.setFont(QFont("Arial latarm", 16))
+        self.label34.setStyleSheet("font-weight: bold")
+        self.label34.adjustSize()
+
+        self.nersrtayin_mij_1 = QLineEdit(self.widget)
+        self.nersrtayin_mij_1.move(140, 3350)
+        self.nersrtayin_mij_1.resize(1500, 32)
+        self.nersrtayin_mij_1.setFont(QFont("Arial latarm", 15))
+
+
+
+        self.label35 = QtWidgets.QLabel(self.widget)
+        self.label35.setText("2. ")
+        self.label35.move(80, 3450)
+        self.label35.setFont(QFont("Arial latarm", 16))
+        self.label35.setStyleSheet("font-weight: bold")
+        self.label35.adjustSize()
+
+        self.nersrtayin_mij_2 = QLineEdit(self.widget)
+        self.nersrtayin_mij_2.move(140, 3450)
+        self.nersrtayin_mij_2.resize(1500, 32)
+        self.nersrtayin_mij_2.setFont(QFont("Arial latarm", 15))
+
+
+
+        self.label36 = QtWidgets.QLabel(self.widget)
+        self.label36.setText("3. ")
+        self.label36.move(80, 3550)
+        self.label36.setFont(QFont("Arial latarm", 16))
+        self.label36.setStyleSheet("font-weight: bold")
+        self.label36.adjustSize()
+
+        self.nersrtayin_mij_3 = QLineEdit(self.widget)
+        self.nersrtayin_mij_3.move(140, 3550)
+        self.nersrtayin_mij_3.resize(1500, 32)
+        self.nersrtayin_mij_3.setFont(QFont("Arial latarm", 15))
+
+
+
+        self.label37 = QtWidgets.QLabel(self.widget)
+        self.label37.setText("4. ")
+        self.label37.move(80, 3650)
+        self.label37.setFont(QFont("Arial latarm", 16))
+        self.label37.setStyleSheet("font-weight: bold")
+        self.label37.adjustSize()
+
+        self.nersrtayin_mij_4 = QLineEdit(self.widget)
+        self.nersrtayin_mij_4.move(140, 3650)
+        self.nersrtayin_mij_4.resize(1500, 32)
+        self.nersrtayin_mij_4.setFont(QFont("Arial latarm", 15))
+
+
+
+
+        self.label38 = QtWidgets.QLabel(self.widget)
+        self.label38.setText("5. ")
+        self.label38.move(80, 3750)
+        self.label38.setFont(QFont("Arial latarm", 16))
+        self.label38.setStyleSheet("font-weight: bold")
+        self.label38.adjustSize()
+
+        self.nersrtayin_mij_5 = QLineEdit(self.widget)
+        self.nersrtayin_mij_5.move(140, 3750)
+        self.nersrtayin_mij_5.resize(1500, 32)
+        self.nersrtayin_mij_5.setFont(QFont("Arial latarm", 15))
+
+
+
+
+        self.label39 = QtWidgets.QLabel(self.widget)
+        self.label39.setText("6. ")
+        self.label39.move(80, 3850)
+        self.label39.setFont(QFont("Arial latarm", 16))
+        self.label39.setStyleSheet("font-weight: bold")
+        self.label39.adjustSize()
+
+        self.nersrtayin_mij_6 = QLineEdit(self.widget)
+        self.nersrtayin_mij_6.move(140, 3850)
+        self.nersrtayin_mij_6.resize(1500, 32)
+        self.nersrtayin_mij_6.setFont(QFont("Arial latarm", 15))
+
+
+
+
+
+
+
+
+
+
+
+
+        self.label40 = QtWidgets.QLabel(self.widget)
+        self.label40.setText("Ելք՝ ")
+        self.label40.move(80, 4020)
+        self.label40.setFont(QFont("Arial latarm", 16))
+        self.label40.setStyleSheet("font-weight: bold")
+        self.label40.adjustSize()
+
+
+
+        self.layout9 = QVBoxLayout()
+        self.setLayout(self.layout9)
+
+        self.elq_1 = QRadioButton(' Առողջացում', self.widget)
+        self.elq_1.toggled.connect(self.update_ubh)
+        self.elq_1.move(320, 4020)
+        self.elq_1.setFont(QFont("Arial latarm", 17))
+        self.elq_1.adjustSize()
+
+        self.elq_2 = QRadioButton(' Լավացում', self.widget)
+        self.elq_2.toggled.connect(self.update_ubh)
+        self.elq_2.move(620, 4020)
+        self.elq_2.setFont(QFont("Arial latarm", 17))
+        self.elq_2.adjustSize()
+
+        self.elq_3 = QRadioButton(' Անփոփոխ', self.widget)
+        self.elq_3.toggled.connect(self.update_ubh)
+        self.elq_3.move(920, 4020)
+        self.elq_3.setFont(QFont("Arial latarm", 17))
+        self.elq_3.adjustSize()
+
+        self.elq_4 = QRadioButton(' Վատացում', self.widget)
+        self.elq_4.toggled.connect(self.update_ubh)
+        self.elq_4.move(1220, 4020)
+        self.elq_4.setFont(QFont("Arial latarm", 17))
+        self.elq_4.adjustSize()
+
+        self.layout9.addWidget(self.elq_1)
+        self.layout9.addWidget(self.elq_2)
+        self.layout9.addWidget(self.elq_3)
+        self.layout9.addWidget(self.elq_4)
+
+        self.RB_group_9 = QtWidgets.QButtonGroup()
+        self.RB_group_9.addButton(self.elq_1)
+        self.RB_group_9.addButton(self.elq_2)
+        self.RB_group_9.addButton(self.elq_3)
+        self.RB_group_9.addButton(self.elq_4)
 
 
 
