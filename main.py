@@ -1,7 +1,8 @@
 from PyQt5 import QtWidgets,QtGui
-from PyQt5.QtWidgets import QApplication , QMainWindow ,QLineEdit,QDateEdit,QRadioButton,QVBoxLayout,QTimeEdit,QScrollArea,QWidget,QTextEdit
+from PyQt5.QtWidgets import QApplication , QMainWindow ,QLineEdit,QDateEdit,QRadioButton,QVBoxLayout,QTimeEdit,QScrollArea,QWidget,QTextEdit,QPushButton
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+
 
 import sys
 
@@ -1027,12 +1028,12 @@ class Window(QMainWindow):
 
 
 
+        self.mutqagrel = QPushButton("Մուտքագրել",self.widget)
+        self.mutqagrel.setFont(QFont("Arial latarm", 16))
+        self.mutqagrel.move(1520, 4020)
+        self.mutqagrel.resize(300, 50)
 
-
-
-
-
-
+        self.mutqagrel.clicked.connect(self.mutq)
 
 
 
@@ -1040,6 +1041,8 @@ class Window(QMainWindow):
 
 
 
+    # def mutq(self):
+    #     pass
 
     def update_ubh(self):
         rn = self.sender()
