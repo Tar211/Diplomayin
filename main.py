@@ -1,14 +1,20 @@
 from PyQt5 import QtWidgets,QtGui
-from PyQt5.QtWidgets import QApplication , QMainWindow ,QLineEdit,QDateEdit,QRadioButton,QVBoxLayout,QTimeEdit,QScrollArea,QWidget,QTextEdit,QPushButton
+from PyQt5.QtWidgets import QApplication , QMainWindow ,QLineEdit,QDateEdit,QRadioButton,QVBoxLayout,QTimeEdit,QScrollArea,QWidget,QTextEdit,QPushButton,QStackedWidget,QHBoxLayout,QStackedLayout
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-
-
 import sys
+
+from DB_actions import *
+from page_2 import *
+
+
 
 class Window(QMainWindow):
     def __init__(self):
         super(Window,self).__init__()
+
+
+        self.db_actions = DbActions()
 
         self.setWindowTitle("Best Life")
         self.setGeometry(0,0,1920,1890)
@@ -802,17 +808,6 @@ class Window(QMainWindow):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
         self.label31 = QtWidgets.QLabel(self.widget)
         self.label31.setText("Նախնական ախտորոշում՝ ")
         self.label31.move(80, 2240)
@@ -1032,17 +1027,28 @@ class Window(QMainWindow):
         self.mutqagrel.setFont(QFont("Arial latarm", 16))
         self.mutqagrel.move(1520, 4020)
         self.mutqagrel.resize(300, 50)
+        # self.mutq = Database.mutq
 
-        self.mutqagrel.clicked.connect(self.mutq)
+        self.mutqagrel.clicked.connect(self.db_actions.inp)
 
 
+
+
+
+
+        self.btn1 = QtWidgets.QPushButton("button 1", self.widget)
+        self.btn1.setGeometry(20, 80, 75, 23)
+
+        self.btn1.clicked.connect(self.switchToPage2)
 
         self.showMaximized()
 
+    def switchToPage2(self):
+        self.hide()
+        self.window_2.show()
 
 
-    # def mutq(self):
-    #     pass
+
 
     def update_ubh(self):
         rn = self.sender()
@@ -1060,9 +1066,9 @@ class Window(QMainWindow):
 
 
 
-
-
-
+####################################################################################################################
+#    Window 1 is finished
+####################################################################################################################
 
 
 
@@ -1076,6 +1082,9 @@ class Window(QMainWindow):
 def application():
     app=QApplication(sys.argv)
     window = Window()
+    window_2 = Window_2()
+    window_2.window = window
+    window.window_2 = window_2
 
 
     window.show()
@@ -1083,3 +1092,4 @@ def application():
 
 if __name__ == "__main__":
     application()
+    connect()
