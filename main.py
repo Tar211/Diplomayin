@@ -1036,9 +1036,9 @@ class Window(QMainWindow):
 
 
 
-        self.btn1 = QtWidgets.QPushButton("button 1", self.widget)
-        self.btn1.setGeometry(20, 80, 75, 23)
-
+        self.btn1 = QtWidgets.QPushButton("Տվյալներ", self.widget)
+        self.btn1.setGeometry(0, 0, 175, 33)
+        self.btn1.setFont(QFont("Arial latarm", 12))
         self.btn1.clicked.connect(self.switchToPage2)
 
         self.showMaximized()
