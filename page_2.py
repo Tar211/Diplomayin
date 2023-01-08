@@ -41,28 +41,49 @@ class Window_2(QMainWindow):
         self.nkar.adjustSize()
 
 
-
+#################################################################################################################
+###### TABLE
+#################################################################################################################
 
         self.table = QTableWidget(self.widget)
         self.table.setFixedWidth(1840)
         self.table.move(30, 300)
 
 
+
+
+
+
         self.table.setColumnCount(3)
         self.table.setRowCount(1)
-        self.table.setHorizontalHeaderLabels(["Header 1", "Header 2", "Header 3"])
-        self.table.horizontalHeaderItem(0).setToolTip("Column 1 ")
-        self.table.horizontalHeaderItem(1).setToolTip("Column 2 ")
-        self.table.horizontalHeaderItem(2).setToolTip("Column 3 ")
+
+        self.table.setColumnWidth(0, 200)
+        self.table.setColumnWidth(1, 1200)
+        self.table.setColumnWidth(2, 419)
+
+        self.table.setHorizontalHeaderLabels([" ID ", " Անուն Ազգանուն Հայրանուն  ", " Հեռ․ համար "])
+        self.table.horizontalHeaderItem(0).setToolTip(" ID ")
+        self.table.horizontalHeaderItem(1).setToolTip(" Անուն Ազգանուն Հայրանուն  ")
+        self.table.horizontalHeaderItem(2).setToolTip(" Հեռ․ համար ")
 
         self.table.horizontalHeaderItem(0).setTextAlignment(Qt.AlignLeft)
         self.table.horizontalHeaderItem(1).setTextAlignment(Qt.AlignHCenter)
-        self.table.horizontalHeaderItem(2).setTextAlignment(Qt.AlignRight)
+        self.table.horizontalHeaderItem(2).setTextAlignment(Qt.AlignHCenter)
+
+
+
+
 
         self.table.setItem(0, 0, QTableWidgetItem("Text in column 1"))
         self.table.setItem(0, 1, QTableWidgetItem("Text in column 2"))
         self.table.setItem(0, 2, QTableWidgetItem("Text in column 3"))
 
+
+
+        # self.header = self.table.horizontalHeader()
+        # self.header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+        # self.header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+        # self.header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
         # self.table.resizeColumnsToContents()
 
         # self.layout = QVBoxLayout(self.widget)
