@@ -1,15 +1,19 @@
 from main import *
+import mysql.connector
+from mysql.connector import Error
 from PyQt5 import QtWidgets,QtGui
 from PyQt5.QtWidgets import QApplication , QMainWindow ,QTableWidgetItem,QLineEdit,QDateEdit,QRadioButton,QVBoxLayout,QTimeEdit,QScrollArea,QWidget,QTextEdit,QPushButton,QStackedWidget,QHBoxLayout,QTableWidget,QGridLayout
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import sys
-
+from DB_actions import *
 
 class Window_2(QMainWindow):
     def __init__(self):
         super(Window_2,self).__init__()
+        from DB_actions import DbActions
 
+        self.db = DbActions()
 
         # self.main_min = QMainWindow()
         # self.ui = Window()
@@ -41,12 +45,31 @@ class Window_2(QMainWindow):
         self.nkar.adjustSize()
 
 
+        import DB_actions
+
+        self.nerbernel = QPushButton("Ներբեռնել",self.widget)
+        self.nerbernel.setFont(QFont("Arial latarm", 16))
+        self.nerbernel.move(300, 200)
+        self.nerbernel.resize(300, 50)
+        self.nerbernel.clicked.connect(lambda: DbActions.load_data(self))
+
+
+
+        self.jnjel = QPushButton("Ջնջել",self.widget)
+        self.jnjel.setFont(QFont("Arial latarm", 16))
+        self.jnjel.move(1200, 200)
+        self.jnjel.resize(300, 50)
+        # self.jnjel.clicked.connect(lambda: DbActions.delete_data(self))
+
+
+
 #################################################################################################################
 ###### TABLE
 #################################################################################################################
 
         self.table = QTableWidget(self.widget)
         self.table.setFixedWidth(1840)
+        self.table.setFixedHeight(2000)
         self.table.move(30, 300)
 
 
@@ -55,7 +78,7 @@ class Window_2(QMainWindow):
 
 
         self.table.setColumnCount(3)
-        self.table.setRowCount(1)
+        self.table.setRowCount(1000)
 
         self.table.setColumnWidth(0, 200)
         self.table.setColumnWidth(1, 1200)
@@ -70,13 +93,16 @@ class Window_2(QMainWindow):
         self.table.horizontalHeaderItem(1).setTextAlignment(Qt.AlignHCenter)
         self.table.horizontalHeaderItem(2).setTextAlignment(Qt.AlignHCenter)
 
+        self.table.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        self.table.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
+
+        self.table.cellDoubleClicked.connect(lambda: DbActions.selectedCell())
 
 
-
-
-        self.table.setItem(0, 0, QTableWidgetItem("Text in column 1"))
-        self.table.setItem(0, 1, QTableWidgetItem("Text in column 2"))
-        self.table.setItem(0, 2, QTableWidgetItem("Text in column 3"))
+        #
+        # self.table.setItem(0, 0, QTableWidgetItem("Text in column 1"))
+        # self.table.setItem(0, 1, QTableWidgetItem("Text in column 2"))
+        # self.table.setItem(0, 2, QTableWidgetItem("Text in column 3"))
 
 
 
@@ -101,7 +127,12 @@ class Window_2(QMainWindow):
 
 
 
+
+
         self.showMaximized()
+
+
+
 
 
 

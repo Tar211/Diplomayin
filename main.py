@@ -4,6 +4,9 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import sys
 
+import mysql.connector
+from mysql.connector import Error
+
 from DB_actions import *
 from page_2 import *
 
@@ -12,16 +15,17 @@ from page_2 import *
 class Window(QMainWindow):
     def __init__(self):
         super(Window,self).__init__()
+        # self.db = DbActions()
 
+        self.setupUI()
 
-        self.db_actions = DbActions()
 
         self.setWindowTitle("Best Life")
         self.setGeometry(0,0,1920,1890)
 
         self.setWindowIcon(QtGui.QIcon("icon.png"))
 
-
+    def setupUI(self):
         #Scroll bar
         self.scroll = QScrollArea()
         self.widget = QWidget()
@@ -104,6 +108,7 @@ class Window(QMainWindow):
         self.first_date.setFont(QFont("Arial latarm", 14))
         self.d = QDate(2020, 6, 10)
         self.first_date.setDate(self.d)
+        self.first_date.setDisplayFormat("yyyy.MM.dd")
 
 
 
@@ -146,6 +151,7 @@ class Window(QMainWindow):
 
 
 
+
         self.label10 = QtWidgets.QLabel(self.widget)
         self.label10.setText("Ծննդյան ամսաթիվ՝ ")
         self.label10.move(80, 645)
@@ -157,6 +163,7 @@ class Window(QMainWindow):
         self.birth_date.setFont(QFont("Arial latarm", 14))
         self.d = QDate(2020, 6, 10)
         self.birth_date.setDate(self.d)
+        self.birth_date.setDisplayFormat("yyyy.MM.dd")
 
 
 
@@ -188,13 +195,15 @@ class Window(QMainWindow):
         self.setLayout(self.layout)
 
         self.male = QRadioButton('Արական', self.widget)
-        self.male.toggled.connect(self.update)
+        self.male.setObjectName('Արական')
+        # self.male.toggled.connect(self.update)
         self.male.move(1280, 545)
         self.male.setFont(QFont("Arial latarm", 15))
         self.male.adjustSize()
 
         self.female = QRadioButton('Իգական', self.widget)
-        self.female.toggled.connect(self.update)
+        self.female.setObjectName('Իգական')
+        # self.female.toggled.connect(self.update)
         self.female.move(1440, 545)
         self.female.setFont(QFont("Arial latarm", 15))
         self.female.adjustSize()
@@ -203,8 +212,10 @@ class Window(QMainWindow):
         self.layout.addWidget(self.female)
 
         self.RB_group_1 =QtWidgets.QButtonGroup()
-        self.RB_group_1.addButton(self.male)
-        self.RB_group_1.addButton(self.female)
+        self.RB_group_1.addButton(self.male,0)
+        self.RB_group_1.addButton(self.female,1)
+
+
         # self.RB_group_1.buttonClicked.connect(print("RB 1 is clicked"))
         #    https://www.youtube.com/watch?v=s2VWoo4sAng&ab_channel=TrevorPayne
 
@@ -393,7 +404,7 @@ class Window(QMainWindow):
         self.setLayout(self.layout2)
 
         self.Ux_bujhastatutyun = QRadioButton('', self.widget)
-        self.Ux_bujhastatutyun.toggled.connect(self.update_ubh)
+        # self.Ux_bujhastatutyun.toggled.connect(self.update_ubh)
         self.Ux_bujhastatutyun.move(500, 1050)
         self.Ux_bujhastatutyun.setFont(QFont("Arial latarm", 15))
         self.Ux_bujhastatutyun.adjustSize()
@@ -404,13 +415,13 @@ class Window(QMainWindow):
         self.ux_bujhast.setFont(QFont("Arial latarm", 15))
 
         self.dimel_e = QRadioButton('Դիմել է ինքնուրույն', self.widget)
-        self.dimel_e.toggled.connect(self.update_ubh)
+        # self.dimel_e.toggled.connect(self.update_ubh)
         self.dimel_e.move(950, 1045)
         self.dimel_e.setFont(QFont("Arial latarm", 15))
         self.dimel_e.adjustSize()
 
         self.shtap_cucumov = QRadioButton('Շտապ ցուցումով', self.widget)
-        self.shtap_cucumov.toggled.connect(self.update_ubh)
+        # self.shtap_cucumov.toggled.connect(self.update_ubh)
         self.shtap_cucumov.move(1300, 1045)
         self.shtap_cucumov.setFont(QFont("Arial latarm", 15))
         self.shtap_cucumov.adjustSize()
@@ -820,6 +831,7 @@ class Window(QMainWindow):
         self.N_axtoroshum.setFont(QFont("Arial latarm", 14))
         self.d = QDate(2020, 6, 10)
         self.N_axtoroshum.setDate(self.d)
+        self.N_axtoroshum.setDisplayFormat("yyyy.MM.dd")
 
 
         self.N_axtoroshum_text = QTextEdit(self.widget)
@@ -1027,9 +1039,10 @@ class Window(QMainWindow):
         self.mutqagrel.setFont(QFont("Arial latarm", 16))
         self.mutqagrel.move(1520, 4020)
         self.mutqagrel.resize(300, 50)
-        # self.mutq = Database.mutq
 
-        self.mutqagrel.clicked.connect(self.db_actions.inp)
+        self.mutqagrel.clicked.connect(lambda: DbActions.add_data(self))
+
+
 
 
 
@@ -1066,9 +1079,36 @@ class Window(QMainWindow):
 
 
 
+
+
+# def add_data(self):
+    #     connection = mysql.connector.connect(host='localhost', database='data', user='root', password='7777')
+    #
+    #
+    #     ID = self.id_pacient.text()
+    #     name_surname = self.AAH.text()
+    #     phone_number = self.job_Pnumber.text()
+    #     first_date = self.first_date.text()
+    #
+    #     cur = connection.cursor()
+    #     insertq = "INSERT INTO pacient_data (ID, name_surname , phone_number,first_date) VALUES (%s,%s,%s,%s)"
+    #     values = (ID , name_surname,phone_number,first_date)
+    #
+    #     try:
+    #         cur.execute(insertq, values)
+    #         connection.commit()
+    #         print("succses")
+    #     except:
+    #         print("error in connection")
+    #     finally:
+    #         cur.close()
+
+
 ####################################################################################################################
 #    Window 1 is finished
 ####################################################################################################################
+
+
 
 
 
@@ -1092,4 +1132,4 @@ def application():
 
 if __name__ == "__main__":
     application()
-    connect()
+
