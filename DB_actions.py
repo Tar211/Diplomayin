@@ -8,7 +8,7 @@ from page_2 import *
 
 class DbActions():
     def __init__(self):
-        self.window_1_2 = Window()
+        pass
         # super(DbActions, self).__init__()
         # self.setupUI()
 
@@ -95,30 +95,6 @@ class DbActions():
         cur.close()
         connection.close()
 
-
-    def selectedCell(self):
-
-        connection = mysql.connector.connect(host='localhost', user='root', password='7777', database='data')
-
-        cur = connection.cursor()
-
-        self.index = self.table.selectedItems()
-
-        querys = "SELECT ID, name_surname , phone_number FROM pacient_data WHERE ID = %s "
-        valuess = (self.index[0].text(),)
-
-
-        cur.execute(querys,valuess)
-
-        row = cur.fetchone()
-
-        print(row)
-
-
-        if row:
-            # self.window_1_2.id_pacient.setText(str(row[0]))
-            self.window_1_2.AAH.setText(row[1])
-            # self.job_Pnumber.setText(row[2])
 
 
 

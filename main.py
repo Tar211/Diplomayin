@@ -1118,18 +1118,17 @@ class Window(QMainWindow):
 
 
 
+from page_2 import Window_2
 
-def application():
-    app=QApplication(sys.argv)
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
     window = Window()
-    window_2 = Window_2()
+    window_2 = Window_2(window)
     window_2.window = window
     window.window_2 = window_2
 
-
     window.show()
     sys.exit(app.exec())
-
-if __name__ == "__main__":
-    application()
 

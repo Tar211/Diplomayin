@@ -1,4 +1,6 @@
+import main
 from main import *
+
 import mysql.connector
 from mysql.connector import Error
 from PyQt5 import QtWidgets,QtGui
@@ -9,11 +11,13 @@ import sys
 from DB_actions import *
 
 class Window_2(QMainWindow):
-    def __init__(self):
+    def __init__(self,existing_window):
         super(Window_2,self).__init__()
         from DB_actions import DbActions
+        from main import Window
 
         self.db = DbActions()
+        self.existing_window = existing_window
 
         # self.main_min = QMainWindow()
         # self.ui = Window()
@@ -96,7 +100,12 @@ class Window_2(QMainWindow):
         self.table.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         self.table.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
 
-        self.table.cellDoubleClicked.connect(lambda: DbActions.selectedCell())
+
+        self.table.cellDoubleClicked.connect(self.selectedCell)
+
+        # self.window_1_2.show()
+
+
 
 
         #
@@ -140,6 +149,31 @@ class Window_2(QMainWindow):
         self.hide()
         self.window.show()
 
+
+    def selectedCell(self):
+
+        connection = mysql.connector.connect(host='localhost', user='root', password='7777', database='data')
+
+        cur = connection.cursor()
+
+        self.index = self.table.selectedItems()
+
+
+        querys = "SELECT ID, name_surname , phone_number FROM pacient_data WHERE ID = %s "
+        valuess = (self.index[0].text(),)
+
+
+        cur.execute(querys,valuess)
+
+        row = cur.fetchone()
+
+        print(row)
+
+
+        if row:
+            self.window.id_pacient.setText(str(row[0]))
+            self.window.AAH.setText(row[1])
+            self.window.job_Pnumber.setText(str(row[2]))
 
 
 
