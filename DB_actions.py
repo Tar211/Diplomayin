@@ -40,10 +40,30 @@ class DbActions():
         job_place = self.job_Place.text()
         ux_bujhast = self.ux_bujhast.text()
         Rb_group2 =  self.RB_group_2.checkedButton().text()
-
+        time_of_reception = self.time_of_reception.text()
+        Rb_group3 = self.RB_group_3.checkedButton().text()
+        Rb_group4 = self.RB_group_4.checkedButton().text()
+        Rb_group5 = self.RB_group_5.checkedButton().text()
+        Rb_group6 = self.RB_group_6.checkedButton().text()
+        Rb_group7 = self.RB_group_7.checkedButton().text()
+        Rb_group8 = self.RB_group_8.checkedButton().text()
+        N_axtoroshum = self.N_axtoroshum.text()
+        print("stage1")
+        N_axtoroshum_text = self.N_axtoroshum_text.toPlainText()
+        print("stage1.5")
+        Ux_hivandutyunner = self.Ux_hivandutyunner.toPlainText()
+        print("stage2")
+        nersrtayin_mij_1 = self.nersrtayin_mij_1.text()
+        nersrtayin_mij_2 = self.nersrtayin_mij_2.text()
+        nersrtayin_mij_3 = self.nersrtayin_mij_3.text()
+        nersrtayin_mij_4 = self.nersrtayin_mij_4.text()
+        nersrtayin_mij_5 = self.nersrtayin_mij_5.text()
+        nersrtayin_mij_6 = self.nersrtayin_mij_6.text()
+        Rb_group9 = self.RB_group_9.checkedButton().text()
+        print("begin")
         cur = connection.cursor()
-        insertq = "INSERT INTO pacient_data (ID, name_surname , phone_number, first_date, srtaban, id_pasport, gender, birth_date, age_pacient, child_num, country, region, city, street, home, building, Apartment, home_Pnumber, job_Place, ux_bujhast, Rb_group2) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-        values = (ID , name_surname,phone_number,first_date,srtaban,id_pasport, Rb_group1,birth_date,age_pacient, child_num,country,region,city,street,home,building,apartment,home_Pnumber,job_place,ux_bujhast,Rb_group2 )
+        insertq = "INSERT INTO pacient_data (ID, name_surname , phone_number, first_date, srtaban, id_pasport, gender, birth_date, age_pacient, child_num, country, region, city, street, home, building, Apartment, home_Pnumber, job_Place, ux_bujhast, Rb_group2,time_of_reception,SIH_kayun,SIH_ankayun,srt_anbav,srt_infarkt,kard_shok,aritmia,N_axtoroshum,N_axtoroshum_text,Ux_hivandutyunner,nersrtayin_mij_1,nersrtayin_mij_2,nersrtayin_mij_3,nersrtayin_mij_4,nersrtayin_mij_5,nersrtayin_mij_6,Elq) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        values = (ID , name_surname,phone_number,first_date,srtaban,id_pasport,Rb_group1,birth_date,age_pacient, child_num,country,region,city,street,home,building,apartment,home_Pnumber,job_place,ux_bujhast,Rb_group2,time_of_reception,Rb_group3,Rb_group4,Rb_group5,Rb_group6,Rb_group7,Rb_group8,N_axtoroshum,N_axtoroshum_text,Ux_hivandutyunner,nersrtayin_mij_1,nersrtayin_mij_2,nersrtayin_mij_3,nersrtayin_mij_4,nersrtayin_mij_5,nersrtayin_mij_6,Rb_group9)
 
 
 
@@ -51,6 +71,7 @@ class DbActions():
         cur.execute(insertq, values)
         connection.commit()
 
+        print("succesfully added")
 
         cur.close()
         connection.close()
@@ -80,21 +101,19 @@ class DbActions():
 
 
     def delete_data(self):
-
-        connection = mysql.connector.connect(host='localhost', user='root', password='7777', database='data')
-        cur = connection.cursor()
-
-        self.item = self.table.selectedItems()
-        deleteq = "DELETE FROM pacient_data WHERE ID = %s"
-        valuesq = (self.item[0].text(),)
-
-        cur.execute(deleteq, valuesq)
-        # self.table.clear()
-
-        # Close the cursor and connection
-        cur.close()
-        connection.close()
-
+        selected = self.table.selectedItems()
+        if selected:
+            rows = set(item.row() for item in selected)
+            for row in sorted(rows, reverse=True):
+                ID = self.table.item(row, 0).text()
+                connection = mysql.connector.connect(host='localhost', user='root', password='7777', database='data')
+                cur = connection.cursor()
+                sql_delete_query = """DELETE FROM pacient_data WHERE ID = %s"""
+                cur.execute(sql_delete_query, (ID,))
+                connection.commit()
+                cur.close()
+                connection.close()
+                self.table.removeRow(row)
 
 
 

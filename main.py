@@ -112,6 +112,7 @@ class Window(QMainWindow):
 
 
 
+
         self.label7 = QtWidgets.QLabel(self.widget)
         self.label7.setText("Սրտաբան՝ ")
         self.label7.move(780, 425)
@@ -200,6 +201,8 @@ class Window(QMainWindow):
         self.male.move(1280, 545)
         self.male.setFont(QFont("Arial latarm", 15))
         self.male.adjustSize()
+
+
 
         self.female = QRadioButton('Իգական', self.widget)
         self.female.setObjectName('Իգական')
@@ -403,7 +406,7 @@ class Window(QMainWindow):
         self.layout2 = QVBoxLayout()
         self.setLayout(self.layout2)
 
-        self.Ux_bujhastatutyun = QRadioButton('', self.widget)
+        self.Ux_bujhastatutyun = QRadioButton('.', self.widget)
         # self.Ux_bujhastatutyun.toggled.connect(self.update_ubh)
         self.Ux_bujhastatutyun.move(500, 1050)
         self.Ux_bujhastatutyun.setFont(QFont("Arial latarm", 15))
@@ -448,12 +451,12 @@ class Window(QMainWindow):
         self.label25.setFont(QFont("Arial latarm", 15))
         self.label25.adjustSize()
 
-        self.timeedit = QTimeEdit(self.widget)
-        self.timeedit.setGeometry(320, 1145, 130, 40)
-        self.timeedit.setFont(QFont("Arial latarm", 15))
-        self.timeedit.setTime(QTime.currentTime())
-        self.timeedit.setTimeRange(QTime(3, 00, 00), QTime(23, 30, 00))
-        self.timeedit.setDisplayFormat('hh:mm')
+        self.time_of_reception = QTimeEdit(self.widget)
+        self.time_of_reception.setGeometry(320, 1145, 130, 40)
+        self.time_of_reception.setFont(QFont("Arial latarm", 15))
+        self.time_of_reception.setTime(QTime.currentTime())
+        self.time_of_reception.setTimeRange(QTime(3, 00, 00), QTime(23, 30, 00))
+        self.time_of_reception.setDisplayFormat('HH:mm')
 
 
 
@@ -469,28 +472,24 @@ class Window(QMainWindow):
         self.setLayout(self.layout3)
 
         self.SIH_kayun_1 = QRadioButton('Ⅰ', self.widget)
-        self.SIH_kayun_1.toggled.connect(self.update_ubh)
         self.SIH_kayun_1.move(550, 1290)
         self.SIH_kayun_1.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.SIH_kayun_1.setFont(QFont("Arial latarm", 21))
         self.SIH_kayun_1.adjustSize()
 
         self.SIH_kayun_2 = QRadioButton('Ⅱ', self.widget)
-        self.SIH_kayun_2.toggled.connect(self.update_ubh)
         self.SIH_kayun_2.move(750, 1290)
         self.SIH_kayun_2.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.SIH_kayun_2.setFont(QFont("Arial latarm", 21))
         self.SIH_kayun_2.adjustSize()
 
         self.SIH_kayun_3 = QRadioButton('Ⅲ', self.widget)
-        self.SIH_kayun_3.toggled.connect(self.update_ubh)
         self.SIH_kayun_3.move(950, 1290)
         self.SIH_kayun_3.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.SIH_kayun_3.setFont(QFont("Arial latarm", 21))
         self.SIH_kayun_3.adjustSize()
 
         self.SIH_kayun_4 = QRadioButton('Ⅳ', self.widget)
-        self.SIH_kayun_4.toggled.connect(self.update_ubh)
         self.SIH_kayun_4.move(1150, 1290)
         self.SIH_kayun_4.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.SIH_kayun_4.setFont(QFont("Arial latarm", 21))
@@ -527,42 +526,36 @@ class Window(QMainWindow):
         self.setLayout(self.layout4)
 
         self.SIH_ankayun_1 = QRadioButton('Class Ⅰ', self.widget)
-        self.SIH_ankayun_1.toggled.connect(self.update_ubh)
         self.SIH_ankayun_1.move(550, 1440)
         self.SIH_ankayun_1.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.SIH_ankayun_1.setFont(QFont("Arial latarm", 17))
         self.SIH_ankayun_1.adjustSize()
 
         self.SIH_ankayun_2 = QRadioButton('Class Ⅱ', self.widget)
-        self.SIH_ankayun_2.toggled.connect(self.update_ubh)
         self.SIH_ankayun_2.move(750, 1440)
         self.SIH_ankayun_2.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.SIH_ankayun_2.setFont(QFont("Arial latarm", 17))
         self.SIH_ankayun_2.adjustSize()
 
         self.SIH_ankayun_3 = QRadioButton('Class Ⅲ', self.widget)
-        self.SIH_ankayun_3.toggled.connect(self.update_ubh)
         self.SIH_ankayun_3.move(950, 1440)
         self.SIH_ankayun_3.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.SIH_ankayun_3.setFont(QFont("Arial latarm", 17))
         self.SIH_ankayun_3.adjustSize()
 
         self.SIH_ankayun_4 = QRadioButton('Non-QMI', self.widget)
-        self.SIH_ankayun_4.toggled.connect(self.update_ubh)
         self.SIH_ankayun_4.move(1150, 1440)
         self.SIH_ankayun_4.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.SIH_ankayun_4.setFont(QFont("Arial latarm", 17))
         self.SIH_ankayun_4.adjustSize()
 
         self.SIH_ankayun_5 = QRadioButton('Variant', self.widget)
-        self.SIH_ankayun_5.toggled.connect(self.update_ubh)
         self.SIH_ankayun_5.move(1350, 1440)
         self.SIH_ankayun_5.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.SIH_ankayun_5.setFont(QFont("Arial latarm", 17))
         self.SIH_ankayun_5.adjustSize()
 
         self.SIH_ankayun_6 = QRadioButton('Post MI', self.widget)
-        self.SIH_ankayun_6.toggled.connect(self.update_ubh)
         self.SIH_ankayun_6.move(1550, 1440)
         self.SIH_ankayun_6.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.SIH_ankayun_6.setFont(QFont("Arial latarm", 17))
@@ -601,28 +594,24 @@ class Window(QMainWindow):
         self.setLayout(self.layout5)
 
         self.srt_anbav_1 = QRadioButton('0', self.widget)
-        self.srt_anbav_1.toggled.connect(self.update_ubh)
         self.srt_anbav_1.move(550, 1590)
         self.srt_anbav_1.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.srt_anbav_1.setFont(QFont("Arial latarm", 21))
         self.srt_anbav_1.adjustSize()
 
         self.srt_anbav_2 = QRadioButton('Ⅱ', self.widget)
-        self.srt_anbav_2.toggled.connect(self.update_ubh)
         self.srt_anbav_2.move(750, 1590)
         self.srt_anbav_2.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.srt_anbav_2.setFont(QFont("Arial latarm", 21))
         self.srt_anbav_2.adjustSize()
 
         self.srt_anbav_3 = QRadioButton('Ⅲ', self.widget)
-        self.srt_anbav_3.toggled.connect(self.update_ubh)
         self.srt_anbav_3.move(950, 1590)
         self.srt_anbav_3.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.srt_anbav_3.setFont(QFont("Arial latarm", 21))
         self.srt_anbav_3.adjustSize()
 
         self.srt_anbav_4 = QRadioButton('Ⅳ', self.widget)
-        self.srt_anbav_4.toggled.connect(self.update_ubh)
         self.srt_anbav_4.move(1150, 1590)
         self.srt_anbav_4.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.srt_anbav_4.setFont(QFont("Arial latarm", 21))
@@ -660,28 +649,24 @@ class Window(QMainWindow):
         self.setLayout(self.layout6)
 
         self.srt_infarkt_1 = QRadioButton('< 6Ժ', self.widget)
-        self.srt_infarkt_1.toggled.connect(self.update_ubh)
         self.srt_infarkt_1.move(550, 1740)
         self.srt_infarkt_1.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.srt_infarkt_1.setFont(QFont("Arial latarm", 19))
         self.srt_infarkt_1.adjustSize()
 
         self.srt_infarkt_2 = QRadioButton('6-12Ժ', self.widget)
-        self.srt_infarkt_2.toggled.connect(self.update_ubh)
         self.srt_infarkt_2.move(750, 1740)
         self.srt_infarkt_2.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.srt_infarkt_2.setFont(QFont("Arial latarm", 19))
         self.srt_infarkt_2.adjustSize()
 
         self.srt_infarkt_3 = QRadioButton('12-24Ժ', self.widget)
-        self.srt_infarkt_3.toggled.connect(self.update_ubh)
         self.srt_infarkt_3.move(950, 1740)
         self.srt_infarkt_3.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.srt_infarkt_3.setFont(QFont("Arial latarm", 19))
         self.srt_infarkt_3.adjustSize()
 
         self.srt_infarkt_4 = QRadioButton('> 24Ժ', self.widget)
-        self.srt_infarkt_4.toggled.connect(self.update_ubh)
         self.srt_infarkt_4.move(1150, 1740)
         self.srt_infarkt_4.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.srt_infarkt_4.setFont(QFont("Arial latarm", 19))
@@ -720,28 +705,24 @@ class Window(QMainWindow):
         self.setLayout(self.layout7)
 
         self.kard_shok_1 = QRadioButton('Ոչ', self.widget)
-        self.kard_shok_1.toggled.connect(self.update_ubh)
         self.kard_shok_1.move(550, 1890)
         self.kard_shok_1.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.kard_shok_1.setFont(QFont("Arial latarm", 19))
         self.kard_shok_1.adjustSize()
 
         self.kard_shok_2 = QRadioButton('Այո', self.widget)
-        self.kard_shok_2.toggled.connect(self.update_ubh)
         self.kard_shok_2.move(750, 1890)
         self.kard_shok_2.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.kard_shok_2.setFont(QFont("Arial latarm", 19))
         self.kard_shok_2.adjustSize()
 
         self.kard_shok_3 = QRadioButton('Հեմոդինամիկ անկայուն', self.widget)
-        self.kard_shok_3.toggled.connect(self.update_ubh)
         self.kard_shok_3.move(950, 1890)
         self.kard_shok_3.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.kard_shok_3.setFont(QFont("Arial latarm", 19))
         self.kard_shok_3.adjustSize()
 
         self.kard_shok_4 = QRadioButton('Ռեֆռակտեր շոկ', self.widget)
-        self.kard_shok_4.toggled.connect(self.update_ubh)
         self.kard_shok_4.move(1450, 1890)
         self.kard_shok_4.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.kard_shok_4.setFont(QFont("Arial latarm", 19))
@@ -780,21 +761,18 @@ class Window(QMainWindow):
         self.setLayout(self.layout8)
 
         self.aritmia_1 = QRadioButton('Sust VT/VF', self.widget)
-        self.aritmia_1.toggled.connect(self.update_ubh)
         self.aritmia_1.move(550, 2040)
         self.aritmia_1.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.aritmia_1.setFont(QFont("Arial latarm", 19))
         self.aritmia_1.adjustSize()
 
         self.aritmia_2 = QRadioButton('Heart Block', self.widget)
-        self.aritmia_2.toggled.connect(self.update_ubh)
         self.aritmia_2.move(950, 2040)
         self.aritmia_2.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.aritmia_2.setFont(QFont("Arial latarm", 19))
         self.aritmia_2.adjustSize()
 
         self.aritmia_3 = QRadioButton('AF/Flutter', self.widget)
-        self.aritmia_3.toggled.connect(self.update_ubh)
         self.aritmia_3.move(1350, 2040)
         self.aritmia_3.setStyleSheet("QRadioButton::indicator{width : 20px;height : 20px;}")
         self.aritmia_3.setFont(QFont("Arial latarm", 19))
@@ -996,25 +974,21 @@ class Window(QMainWindow):
         self.setLayout(self.layout9)
 
         self.elq_1 = QRadioButton(' Առողջացում', self.widget)
-        self.elq_1.toggled.connect(self.update_ubh)
         self.elq_1.move(320, 4020)
         self.elq_1.setFont(QFont("Arial latarm", 17))
         self.elq_1.adjustSize()
 
         self.elq_2 = QRadioButton(' Լավացում', self.widget)
-        self.elq_2.toggled.connect(self.update_ubh)
         self.elq_2.move(620, 4020)
         self.elq_2.setFont(QFont("Arial latarm", 17))
         self.elq_2.adjustSize()
 
         self.elq_3 = QRadioButton(' Անփոփոխ', self.widget)
-        self.elq_3.toggled.connect(self.update_ubh)
         self.elq_3.move(920, 4020)
         self.elq_3.setFont(QFont("Arial latarm", 17))
         self.elq_3.adjustSize()
 
         self.elq_4 = QRadioButton(' Վատացում', self.widget)
-        self.elq_4.toggled.connect(self.update_ubh)
         self.elq_4.move(1220, 4020)
         self.elq_4.setFont(QFont("Arial latarm", 17))
         self.elq_4.adjustSize()
@@ -1039,8 +1013,8 @@ class Window(QMainWindow):
         self.mutqagrel.setFont(QFont("Arial latarm", 16))
         self.mutqagrel.move(1520, 4020)
         self.mutqagrel.resize(300, 50)
-
-        self.mutqagrel.clicked.connect(lambda: DbActions.add_data(self))
+        from  DB_actions import DbActions
+        self.mutqagrel.clicked.connect(lambda : DbActions.add_data(self))
 
 
 
@@ -1063,11 +1037,7 @@ class Window(QMainWindow):
 
 
 
-    def update_ubh(self):
-        rn = self.sender()
 
-        if rn.isChecked():
-            print("2 is checked")
 
     def update(self):
         # get the radio button the send the signal
@@ -1114,15 +1084,7 @@ class Window(QMainWindow):
 
 
 
-
-
-
-
-from page_2 import Window_2
-
-
-
-if __name__ == "__main__":
+def application():
     app = QApplication(sys.argv)
     window = Window()
     window_2 = Window_2(window)
@@ -1131,4 +1093,13 @@ if __name__ == "__main__":
 
     window.show()
     sys.exit(app.exec())
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    application()
 
