@@ -7,6 +7,8 @@ from PyQt5 import QtWidgets,QtGui
 from PyQt5.QtWidgets import QApplication , QMainWindow ,QTableWidgetItem,QLineEdit,QDateEdit,QRadioButton,QVBoxLayout,QTimeEdit,QScrollArea,QWidget,QTextEdit,QPushButton,QStackedWidget,QHBoxLayout,QTableWidget,QGridLayout
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+from PyQt5 import QtWidgets, QtCore
+
 import sys
 from DB_actions import *
 
@@ -78,9 +80,6 @@ class Window_2(QMainWindow):
 
 
 
-
-
-
         self.table.setColumnCount(3)
         self.table.setRowCount(1000)
 
@@ -88,14 +87,25 @@ class Window_2(QMainWindow):
         self.table.setColumnWidth(1, 1200)
         self.table.setColumnWidth(2, 419)
 
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        font.setWeight(QtGui.QFont.Bold)
+
         self.table.setHorizontalHeaderLabels([" ID ", " Անուն Ազգանուն Հայրանուն  ", " Հեռ․ համար "])
+        self.table.horizontalHeaderItem(0).setFont(font)
+        self.table.horizontalHeaderItem(1).setFont(font)
+        self.table.horizontalHeaderItem(2).setFont(font)
         self.table.horizontalHeaderItem(0).setToolTip(" ID ")
         self.table.horizontalHeaderItem(1).setToolTip(" Անուն Ազգանուն Հայրանուն  ")
         self.table.horizontalHeaderItem(2).setToolTip(" Հեռ․ համար ")
 
-        self.table.horizontalHeaderItem(0).setTextAlignment(Qt.AlignLeft)
+        self.table.horizontalHeaderItem(0).setTextAlignment(Qt.AlignHCenter)
         self.table.horizontalHeaderItem(1).setTextAlignment(Qt.AlignHCenter)
         self.table.horizontalHeaderItem(2).setTextAlignment(Qt.AlignHCenter)
+
+
+
 
         self.table.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         self.table.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
@@ -105,25 +115,6 @@ class Window_2(QMainWindow):
 
 
 
-
-        #
-        # self.table.setItem(0, 0, QTableWidgetItem("Text in column 1"))
-        # self.table.setItem(0, 1, QTableWidgetItem("Text in column 2"))
-        # self.table.setItem(0, 2, QTableWidgetItem("Text in column 3"))
-
-
-
-        # self.header = self.table.horizontalHeader()
-        # self.header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
-        # self.header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
-        # self.header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
-        # self.table.resizeColumnsToContents()
-
-        # self.layout = QVBoxLayout(self.widget)
-        # self.layout.addWidget(self.table)
-        # self.setLayout(self.layout)
-
-        # grid_layout.addWidget(self.table, 100, 100)
 
 
 
@@ -166,12 +157,6 @@ class Window_2(QMainWindow):
         cur.execute(querys,valuess)
 
         row = cur.fetchone()
-
-
-
-
-        # print(type(row[6]))
-        # print(row[6])
 
 
 

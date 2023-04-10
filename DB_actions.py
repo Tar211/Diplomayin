@@ -9,15 +9,12 @@ from page_2 import *
 class DbActions():
     def __init__(self):
         pass
-        # super(DbActions, self).__init__()
-        # self.setupUI()
 
-        # self.mutqagrel.clicked.connect(self.add_data())
 
 
     def add_data(self):
         connection = mysql.connector.connect(host='localhost', database='data', user='root', password='7777')
-
+        print("skizb")
 
         ID = self.id_pacient.text()
         name_surname = self.AAH.text()
@@ -65,7 +62,7 @@ class DbActions():
         insertq = "INSERT INTO pacient_data (ID, name_surname , phone_number, first_date, srtaban, id_pasport, gender, birth_date, age_pacient, child_num, country, region, city, street, home, building, Apartment, home_Pnumber, job_Place, ux_bujhast, Rb_group2,time_of_reception,SIH_kayun,SIH_ankayun,srt_anbav,srt_infarkt,kard_shok,aritmia,N_axtoroshum,N_axtoroshum_text,Ux_hivandutyunner,nersrtayin_mij_1,nersrtayin_mij_2,nersrtayin_mij_3,nersrtayin_mij_4,nersrtayin_mij_5,nersrtayin_mij_6,Elq) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
         values = (ID , name_surname,phone_number,first_date,srtaban,id_pasport,Rb_group1,birth_date,age_pacient, child_num,country,region,city,street,home,building,apartment,home_Pnumber,job_place,ux_bujhast,Rb_group2,time_of_reception,Rb_group3,Rb_group4,Rb_group5,Rb_group6,Rb_group7,Rb_group8,N_axtoroshum,N_axtoroshum_text,Ux_hivandutyunner,nersrtayin_mij_1,nersrtayin_mij_2,nersrtayin_mij_3,nersrtayin_mij_4,nersrtayin_mij_5,nersrtayin_mij_6,Rb_group9)
 
-
+        print("imsert")
 
 
         cur.execute(insertq, values)
@@ -89,12 +86,20 @@ class DbActions():
         cur.execute(query)
         result = cur.fetchall()
 
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(17)
+        font.setWeight(2)
 
         self.table.setRowCount(0)
         for row_number, row_data in enumerate(result):
             self.table.insertRow(row_number)
             for column_number,data in enumerate(row_data):
-                self.table.setItem(row_number,column_number,QtWidgets.QTableWidgetItem(str(data)))
+                item = QtWidgets.QTableWidgetItem(str(data))
+                item.setFont(font)
+                item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                # item.setTextAlignment(Qt.AlignJustify | Qt.AlignVCenter)
+                self.table.setItem(row_number,column_number,item)
 
         cur.close()
         connection.close()
@@ -117,21 +122,5 @@ class DbActions():
 
 
 
-
-# def connect():
-#     pass
-    # try:
-    #
-    #     conn = mysql.connector.connect(host = 'localhost', database = "data" ,  user ='root', password = '7777')
-    #     if conn.is_connected():
-    #         print("connected to mysql database")
-    # except Error as e:
-    #     print(e)
-    #
-    # finally:
-    #     conn.close()
-    #
-    # print(conn)
-    #
 
 

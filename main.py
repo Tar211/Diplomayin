@@ -15,7 +15,7 @@ from page_2 import *
 class Window(QMainWindow):
     def __init__(self):
         super(Window,self).__init__()
-        # self.db = DbActions()
+
 
         self.setupUI()
 
@@ -55,9 +55,8 @@ class Window(QMainWindow):
         self.logo=QPixmap('nkar.png')
         self.nkar.setPixmap(self.logo)
         self.nkar.move(770,15)
-        # self.nkar.setGeometry(770,15, 500, 500)
         self.nkar.adjustSize()
-        # self.nkar.resize(self.logo.width(),self.logo.height())
+
 
 
         self.label3 = QtWidgets.QLabel(self.widget)
@@ -222,13 +221,7 @@ class Window(QMainWindow):
         # self.RB_group_1.buttonClicked.connect(print("RB 1 is clicked"))
         #    https://www.youtube.com/watch?v=s2VWoo4sAng&ab_channel=TrevorPayne
 
-        # def update(self):
-        #     # get the radio button the send the signal
-        #     rb = self.sender()
-        #
-        #     # check if the radio button is checked
-        #     if rb.isChecked():
-        #         self.result_label.setText(f'You selected {rb.text()}')
+
 
 
 
@@ -439,7 +432,7 @@ class Window(QMainWindow):
         self.RB_group_2.addButton(self.dimel_e)
         self.RB_group_2.addButton(self.shtap_cucumov)
 
-        # self.RB_group_2.buttonClicked.connect(print("RB 1 is clicked"))
+
 
 
 
@@ -1008,7 +1001,6 @@ class Window(QMainWindow):
 
 
 
-
         self.mutqagrel = QPushButton("Մուտքագրել",self.widget)
         self.mutqagrel.setFont(QFont("Arial latarm", 16))
         self.mutqagrel.move(1520, 4020)
@@ -1020,66 +1012,18 @@ class Window(QMainWindow):
 
 
 
-
-
-
         self.btn1 = QtWidgets.QPushButton("Տվյալներ", self.widget)
         self.btn1.setGeometry(0, 0, 175, 33)
         self.btn1.setFont(QFont("Arial latarm", 12))
         self.btn1.clicked.connect(self.switchToPage2)
+
+
 
         self.showMaximized()
 
     def switchToPage2(self):
         self.hide()
         self.window_2.show()
-
-
-
-
-
-
-    def update(self):
-        # get the radio button the send the signal
-        rb = self.sender()
-
-        # check if the radio button is checked
-        if rb.isChecked():
-            print("1 is checked")
-
-
-
-
-
-# def add_data(self):
-    #     connection = mysql.connector.connect(host='localhost', database='data', user='root', password='7777')
-    #
-    #
-    #     ID = self.id_pacient.text()
-    #     name_surname = self.AAH.text()
-    #     phone_number = self.job_Pnumber.text()
-    #     first_date = self.first_date.text()
-    #
-    #     cur = connection.cursor()
-    #     insertq = "INSERT INTO pacient_data (ID, name_surname , phone_number,first_date) VALUES (%s,%s,%s,%s)"
-    #     values = (ID , name_surname,phone_number,first_date)
-    #
-    #     try:
-    #         cur.execute(insertq, values)
-    #         connection.commit()
-    #         print("succses")
-    #     except:
-    #         print("error in connection")
-    #     finally:
-    #         cur.close()
-
-
-####################################################################################################################
-#    Window 1 is finished
-####################################################################################################################
-
-
-
 
 
 
@@ -1093,9 +1037,6 @@ def application():
 
     window.show()
     sys.exit(app.exec())
-
-
-
 
 
 
